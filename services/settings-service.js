@@ -19,17 +19,11 @@ function writeSettings(newSettings) {
 }
 
 function getDefaultDir() {
-  const defaultDir = getDefaultDir().defaultDir;
+  const defaultDir = getSettings().defaultDir;
   if (!defaultDir) {
     return process.cwd;
-  } else {
-    if (isValidDir(defaultDir)) {
-      return defaultDir;
-    } else {
-      return process.cwd;
-    }
-  }
-
+  } 
+  return isValidDir(defaultDir) ? defaultDir : process.cwd;
 }
 
 function isValidDir(dirPath) {
