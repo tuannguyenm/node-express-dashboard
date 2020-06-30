@@ -32,7 +32,7 @@ function isDirectory(currentDir, file) {
 function readDir(currentDir, res, query) {
     fs.readdir(currentDir, (err, files) => {
         let directoryContents = [];
-        if (err) {
+        if (!err) {
             directoryContents = getDirectoryContents(files, currentDir, query);
         }
         res.json(directoryContents);
